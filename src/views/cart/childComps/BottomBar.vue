@@ -3,13 +3,13 @@
     <CheckButton class="select-all" ref="CheckButton" @click.native="checkBtnClick" :is-checked="isSelectAll"></CheckButton>
     <span>全选</span>
     <span class="total-price">合计: ¥{{totalPrice}}</span>
-    <span class="buy-product">去计算({{$store.getters.cartCount}})</span>
+    <span class="buy-product" @click="buyClick">去计算({{$store.getters.cartCount}})</span>
   </div>
 </template>
 
 <script>
   import CheckButton from './CheckButton'
-
+  import {Toast} from 'vant'
 	export default {
 		name: "BottomBar",
     components: {
@@ -46,6 +46,9 @@
             item.checked = false;
           });
         }
+      },
+      buyClick(){
+        this.$toast('没钱了')
       }
     }
 	}

@@ -1,12 +1,12 @@
 <template>
   <div v-if="Object.keys(banners).length !==0">
-    <swiper>
-      <swiper-item v-for="(item,index) in banners" :key="index">
+    <van-swipe class="my-swipe" :autoplay="3000" indicator-color="white" >
+      <van-swipe-item  v-for="(item,index) in banners" :key="index">
         <a :href="item.link">
           <img :src="item.image" alt="" @load="imageLoad">
         </a>
-      </swiper-item>
-    </swiper>
+      </van-swipe-item>
+    </van-swipe>
   </div>
 </template>
 
@@ -45,5 +45,10 @@
 </script>
 
 <style scoped>
-
+.my-swipe{
+  width: 100vw;
+}
+.my-swipe img{
+  width: 100%;
+}
 </style>

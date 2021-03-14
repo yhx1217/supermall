@@ -48,7 +48,6 @@
         categoryData: {},
         currentIndex: -1,
         currentType: POP,
-        categoryDetail:[]
       }
     },
     created() {
@@ -62,7 +61,7 @@
       },
       showCategoryDetail() {
 		    if (this.currentIndex === -1) return []
-		    return this.categoryDetail
+        return this.categoryData[this.currentIndex].categoryDetail[this.currentType]
       }
     },
     methods: {
@@ -119,7 +118,7 @@
 		    getCategoryDetail(miniWallkey, type).then(res => {
 		      // 3.将获取的数据保存下来
 		      this.categoryData[this.currentIndex].categoryDetail[type] = res
-          this.categoryDetail = this.categoryData[this.currentIndex].categoryDetail[type]
+          this.categoryData = {...this.categoryData}
         })
       },
 
